@@ -38,7 +38,6 @@ func main() {
 	// Create channel for user's answer
 	answerCh := make(chan string)
 	
-
 	// Initialise Game Loop as a Label, to be broken later on
 	GameLoop:
 	for i, p := range problems {
@@ -60,7 +59,8 @@ func main() {
 			break GameLoop
 
 		case answer := <- answerCh:
-			if strings.ToLower(answer) == strings.ToLower(p.Answer) {
+			
+			if strings.EqualFold(answer, p.Answer) {
 				correct++
 			}
 			answered++
