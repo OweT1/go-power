@@ -1,33 +1,13 @@
 # go-power
 
-Just for fun
+Just for fun :|
 
-To initialise, we will do:
+The projects can be found in the `projects/` folder.
 
-```powershell
-go mod init projects
-```
+To run the scripts of the different projects, we can simply do so by changing directory to the respective projects and running the `main.go` files. This command has been encapsulated in the respective scripts in the `scripts/` folder.
 
-Thereafter, to run the scripts of the different projects, we can simply do so by changing directory to the respective projects and running the `main.go` files. In your terminal you can do:
+As an example, if we want to run the project script for the url_checker (under `projects/url_checker/`), we can simply run:
 
-```powershell
-cd projects/xxx
-```
-
-followed by:
-
-```powershell
-go run main.go
-```
-
-As an example, if we want to run the project script for the url_checker (under `projects/url_checker/main.go`), we can simply do:
-
-```powershell
-cd projects/url_checker
-```
-
-followed by:
-
-```powershell
-go run main.go
+```bash
+scripts/run_url_checker.sh
 ```
