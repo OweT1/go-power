@@ -12,11 +12,7 @@ import (
 var FILENAME string = "data/problems.csv"
 var TIMELIMIT int = 30
 
-func logResults(answered, correct, num_problems int) {
-	fmt.Printf("You answered %d out of %d questions.\n", answered, num_problems)
-	fmt.Printf("You scored %d out of %d questions.\n", correct, num_problems)
-}
-
+// Main function
 func main() {
 	file, err := utils.OpenFile(FILENAME)
 	if err != nil {

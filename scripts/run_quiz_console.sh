@@ -1,5 +1,5 @@
 #!/bin/bash
 
 cd projects/quiz_console
-go run main.go
+go run .
 cd ../../
