@@ -8,14 +8,26 @@ To initialise, we will do:
 go mod init projects
 ```
 
-Thereafter, to run the scripts of the different projects, we can simply do so by running:
+Thereafter, to run the scripts of the different projects, we can simply do so by changing directory to the respective projects and running the `main.go` files. In your terminal you can do:
 
 ```powershell
-go run projects/xxx.go
+cd projects/xxx
 ```
 
-As an example, if we want to run the project script for the url_checker (under `projects/url_checker.go`), we can simply run:
+followed by:
 
 ```powershell
-go run projects/url_checker.go
+go run main.go
+```
+
+As an example, if we want to run the project script for the url_checker (under `projects/url_checker/main.go`), we can simply do:
+
+```powershell
+cd projects/url_checker
+```
+
+followed by:
+
+```powershell
+go run main.go
 ```
