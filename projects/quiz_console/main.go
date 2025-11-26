@@ -24,8 +24,6 @@ func main() {
 		os.Exit(1)
 	}
 
-	// File opened successfully
-	fmt.Printf("File `%s` opened successfully!\n", FILENAME)
 	defer file.Close() // to close the file once we are done with the code
 
 	// Parse file as CSV
@@ -59,7 +57,6 @@ func main() {
 			break GameLoop
 
 		case answer := <- answerCh:
-			
 			if strings.EqualFold(answer, p.Answer) {
 				correct++
 			}
