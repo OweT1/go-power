@@ -14,9 +14,24 @@ scripts/run_url_checker.sh
 
 ## Library
 
-For this project, we will be running an API server, hence running the script will simply start up the server at port 8080.
+### Set-up Instructions & App Details
+
+For this project, we will be running an API server, hence running the `run_library.sh` script will simply start up the server at port 8080.
 To view the Library we have currently, you can go to `http://localhost:8080/books` to check out the books in your Library.
-We have implemented 2 functions/endpoints - Adding a Book and Deleting a Book.
+
+However, you may realise that your library currently does not have any books.
+Hence, in order add some books to your library, you will need to run an ingestion script.
+On another bash terminal, run the script:
+
+```bash
+scripts/populate_library.sh
+```
+
+This should populate your library with 2 books.
+
+### Endpoint Details
+
+We have implemented 2 API endpoints - Adding and Deleting a Book.
 
 To add a book, you can do something like:
 
