@@ -5,4 +5,4 @@ var LIBRARY = []Book{
 	{ID: "2", Title: "Clean Code", Author: "Robert Martin"},
 }
 
-var PORT int = 8080
+const PORT int = 8080
