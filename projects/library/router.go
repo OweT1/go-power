@@ -2,15 +2,19 @@ package main
 
 import (
 	"library/api/v1/routes"
+	"library/db"
 	"net/http"
 )
 
-func GetRouter() (*http.ServeMux){
+func GetRouter(repo *db.Repository) (*http.ServeMux){
 	mux := http.NewServeMux()
 
-	mux.HandleFunc("GET /books", routes.GetBooks)
-	mux.HandleFunc("POST /books", routes.CreateBook)
-	mux.HandleFunc("DELETE /books/{id}", routes.DeleteBook)
+	bookHandler := routes.BookHandler{
+		Repo: repo,
+	}
+	mux.HandleFunc("GET /books", bookHandler.GetBooks)
+	mux.HandleFunc("POST /books", bookHandler.CreateBook)
+	mux.HandleFunc("DELETE /books/{id}", bookHandler.DeleteBook)
 
 	return mux
 }

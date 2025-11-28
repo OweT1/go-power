@@ -1,32 +1,26 @@
 package db
 
 import (
-	"database/sql"
-	"fmt"
+	"library/utils"
 	"log"
 
-	_ "modernc.org/sqlite" // Import the driver
+	// "gorm.io/driver/sqlite"
+	"github.com/glebarez/sqlite"
+	"gorm.io/gorm"
 )
 
-var DB *sql.DB
+type Repository struct {
+	DB *gorm.DB
+}
 
-func InitDB() {
-	var err error
-
-	DB, err = sql.Open("sqlite", "./library.db")
+func InitDB(dbPath string) *Repository {
+	db, err := gorm.Open(sqlite.Open(dbPath), &gorm.Config{})
 	if err != nil {
-		log.Fatal(err)
+		log.Fatal("Failed to connect to database:", err)
 	}
 
-	err = DB.Ping()
-	if err != nil {
-		log.Fatal("Unable to connect to database: ", err)
-	}
-	fmt.Println("Connected to Library Database!")
+	// GORM automatically creates/updates the table
+	db.AutoMigrate(&utils.Book{})
 
-	_, err = DB.Exec(createTableQuery)
-	if err != nil {
-		log.Fatal("Failed to create table:", err)
-	}
-	fmt.Println("Database initialized successfully.")
+	return &Repository{DB: db}
 }

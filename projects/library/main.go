@@ -3,17 +3,28 @@ package main
 import (
 	"fmt"
 	"library/db"
-	"library/utils"
+	"log"
 	"net/http"
+	"os"
+
+	"github.com/joho/godotenv"
 )
 
 func main() {
+	// Load environmental variables
+	err := godotenv.Load("../../.env")
+	if err != nil {
+		log.Println("No .env file found, using defaults")
+	}
+
+	dbPath := os.Getenv("DB_PATH")
+	port := os.Getenv("PORT")
+
 	// Initialise DB
-	db.InitDB()
+	var repo *db.Repository = db.InitDB(dbPath)
 
 	// Start up server
-	router := GetRouter()
-	fmt.Printf("Server listening on port %d...", utils.PORT)
-	port := fmt.Sprintf(":%d", utils.PORT)
-	http.ListenAndServe(port, router)
+	router := GetRouter(repo)
+	fmt.Printf("Server listening on port %s...", port)
+	http.ListenAndServe(fmt.Sprintf(":%s", port), router)
 }

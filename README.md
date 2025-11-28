@@ -12,7 +12,16 @@ As an example, if we want to run the project script for the url_checker (under `
 scripts/run_url_checker.sh
 ```
 
-## Library
+## Environmental Variables
+
+We will require the use of environmental variables for some of our projects.
+To get a copy of the `.env` file, just simply run:
+
+```powershell
+cp .env.example .env
+```
+
+## Project - Library
 
 ### Set-up Instructions & App Details
 
