@@ -60,7 +60,7 @@ To add a book, you can do something like:
 curl -X POST http://localhost:8080/books \
 -H "Authorization: Bearer $(cat "projects/library/jwt_token.txt")" \
 -H "Content-Type: application/json" \
--d '{"id": "3", "title": "The Hobbit", "author": "Tolkien"}'
+-d '{"title": "The Hobbit", "author": "Tolkien"}'
 ```
 
 To delete a book, you can do something like:
