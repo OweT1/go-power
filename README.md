@@ -38,7 +38,36 @@ scripts/populate_library.sh
 
 This should populate your library with 2 books.
 
+> [!NOTE]
+> In order to run the above script, you must be logged in.
+> Details of registering and logging in can be found in the following section.
+
 ### Endpoint Details
+
+#### Authentication
+
+For authentication purposes, we have 2 endpoints - Registering and Logging In.
+
+To register a user, you can do:
+
+```bash
+curl -X POST http://localhost:8080/register \
+-H "Content-Type: application/json" \
+-d '{"username": "test_user", "password": "test_password"}'
+```
+
+To login, you can then do:
+
+```bash
+curl -X POST http://localhost:8080/login \
+-H "Content-Type: application/json" \
+-d '{"username": "test_user", "password": "test_password"}'
+```
+
+By doing the above, you will then find a file called `jwt_token.txt` created.
+Inside contains the `jwt_token` required to add and delete books.
+
+#### Books
 
 We have implemented 2 API endpoints - Adding and Deleting a Book.
 
@@ -46,6 +75,7 @@ To add a book, you can do something like:
 
 ```bash
 curl -X POST http://localhost:8080/books \
+-H "Authorization: Bearer $(cat "projects/library/jwt_token.txt")" \
 -H "Content-Type: application/json" \
 -d '{"id": "3", "title": "The Hobbit", "author": "Tolkien"}'
 ```
@@ -53,7 +83,12 @@ curl -X POST http://localhost:8080/books \
 To delete a book, you can do something like:
 
 ```bash
-curl -X DELETE http://localhost:8080/books/1
+curl -X DELETE http://localhost:8080/books/1 \
+-H "Authorization: Bearer $(cat "projects/library/jwt_token.txt")"
 ```
+
+> [!NOTE]
+> To run the above commands, you must be logged in and can only run the commands from the main directory (`go-power/`)
+> If not, there will be directory issues with finding the `jwt_token.txt` file.
 
 where the book(s) with `id` of value `1` will be deleted from our Library.

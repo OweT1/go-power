@@ -1,1 +1,8 @@
+# Environmental variables
 .env
+
+# Database files
+*.db
+
+# Misc variables
+jwt_token.txt

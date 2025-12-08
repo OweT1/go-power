@@ -20,7 +20,7 @@ func InitDB(dbPath string) *Repository {
 	}
 
 	// GORM automatically creates/updates the table
-	db.AutoMigrate(&utils.Book{})
+	db.AutoMigrate(&utils.Book{}, &utils.User{})
 
 	return &Repository{DB: db}
 }
